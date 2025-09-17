@@ -1,4 +1,4 @@
-InsightLink: A URL Shortener with Real-time Analytics
+**InsightLink**: A URL Shortener with Real-time Analytics
 A robust, multi-service URL shortener application built with a modern backend stack. InsightLink not only shortens long URLs but also tracks click analytics in real-time. The entire application stack is containerised with Docker and managed by Docker Compose, ensuring a seamless, one-command setup for development and deployment.
 
 Core Features
