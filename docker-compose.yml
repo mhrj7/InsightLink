@@ -1,0 +1,36 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  # Our FastAPI Backend Service
+  api:
+    build: . # Build the image from the Dockerfile in the current directory
+    ports:
+      - "8001:8000" # Map host port 8001 to container port 8000 to avoid conflicts
+    volumes:
+      - ./app:/code/app # Mount the local app directory for live reloading
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/mydatabase
+      - REDIS_HOST=redis
+    depends_on:
+      - db
+      - redis
+
+  # The PostgreSQL Database Service
+  db:
+    image: postgres:15-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=mydatabase
+    ports:
+      - "5432:5432"
+
+  # The Redis Caching Service
+  redis:
+    image: redis:7-alpine
+
+volumes:
+  postgres_data:

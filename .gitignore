@@ -1,0 +1,7 @@
+# Python
+__pycache__/
+*.pyc
+
+# IDE / Editor folders
+.vscode/
+.idea/
